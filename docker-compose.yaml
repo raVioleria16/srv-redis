@@ -1,9 +1,23 @@
+version: '3.8'
+
 services:
-  service_name:  # change
-    image: image  # change
-    container_name: container_name  # change
+  redis:
+    # Use the redis:alpine image from Docker Hub
+    image: redis:alpine
+    container_name: db-redis
     ports:
-      - "0000:0000" # change
+    - "6379:6379"
+    volumes:
+    - redis_data:/data
+    networks:
+      - internal-network
 
     # up at docker startup
     restart: unless-stopped
+
+volumes:
+  redis_data:
+
+networks:
+  internal-network:
+    external: true

@@ -1,0 +1,9 @@
+services:
+  service_name:  # change
+    image: image  # change
+    container_name: container_name  # change
+    ports:
+      - "0000:0000" # change
+
+    # up at docker startup
+    restart: unless-stopped
